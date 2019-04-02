@@ -33,17 +33,13 @@ public class QuartzTest {
             // 触发器
             TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
             // 触发器名,触发器组
-            triggerBuilder.withIdentity("CronTrigger1", "CronTriggerGroup");
+            triggerBuilder.withIdentity("CronTrigger", "CronTriggerGroup");
             triggerBuilder.startNow();
 
             // 触发器时间设定（通过表达式来定义执行时间）
-            //triggerBuilder.withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"));
-            // 创建CronTrigger对象
-            //CronTrigger trigger = (CronTrigger) triggerBuilder.build();
-
-
+            triggerBuilder.withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"));
             // 触发器时间设定（直接定义每隔多少秒执行一次）
-            triggerBuilder.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever());
+            //triggerBuilder.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever());
             // 创建Trigger对象
             Trigger trigger = triggerBuilder.build();
 
@@ -66,7 +62,7 @@ public class QuartzTest {
             }
             //Thread.sleep(6000);
             // 停止调度
-            scheduler.shutdown();
+            //scheduler.shutdown();
             // 按新的trigger(触发器)重新设置job执行
             //scheduler.rescheduleJob(trigger.getKey(), trigger);
 
