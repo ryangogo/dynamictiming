@@ -19,7 +19,8 @@ public class HelloJob implements Job {
 
         JobDetail detail = jobExecutionContext.getJobDetail();
         String name = detail.getJobDataMap().getString("name");
-        System.out.println("say hello " + name);
+        System.out.println("say hello " + name)
+        ;
 
     }
 }
